@@ -29,6 +29,11 @@ export default function TriangleCalculator() {
   const calculateTriangle = () => {
     const newValues = { ...values }
 
+    // ensure a + b = 90
+    if (newValues.a && newValues.b && newValues.a + newValues.b !== 90) {
+      newValues.b = 90 - newValues.a;
+    }
+
     // Calculate missing sides using Pythagorean theorem
     if (newValues.a && newValues.b && !newValues.c) {
       newValues.c = Math.sqrt(Math.pow(newValues.a, 2) + Math.pow(newValues.b, 2))
